@@ -8,3 +8,5 @@
 - Prints a some text followed by a new line.
 ### 3-print_number.py
 - Prints a number followed by some text.
+### 4-print_float.py
+- Prints a number to a precision of 2 digits.
