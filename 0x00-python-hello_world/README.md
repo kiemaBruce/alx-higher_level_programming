@@ -4,3 +4,5 @@
 ### 1-run_inline
 - Runs Python code.
 - The Python code should be saved in the environment variable $PYCODE.
+### 2-print.py
+- Prints a some text followed by a new line.
