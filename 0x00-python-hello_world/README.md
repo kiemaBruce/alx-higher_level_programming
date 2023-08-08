@@ -10,3 +10,5 @@
 - Prints a number followed by some text.
 ### 4-print_float.py
 - Prints a number to a precision of 2 digits.
+### 5-print_string.py
+- Prints a text a certain number of times.
