@@ -6,3 +6,5 @@
 - The Python code should be saved in the environment variable $PYCODE.
 ### 2-print.py
 - Prints a some text followed by a new line.
+### 3-print_number.py
+- Prints a number followed by some text.
