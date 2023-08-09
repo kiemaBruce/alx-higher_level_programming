@@ -18,3 +18,5 @@
 - Slices a string in different ways.
 ### 8-concat_edges.py
 - Concatenates different parts of a longer string in order to form a new string.
+### 9-easter_egg.py
+-Print the Zen of Python by Tim Peters.
