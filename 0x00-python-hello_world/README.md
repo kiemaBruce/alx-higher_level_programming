@@ -14,3 +14,5 @@
 - Prints a text a certain number of times.
 ### 6-concat.py
 - Concatenates two strings into one.
+### 7-edges.py
+- Slices a string in different ways.
