@@ -16,3 +16,5 @@
 - Concatenates two strings into one.
 ### 7-edges.py
 - Slices a string in different ways.
+### 8-concat_edges.py
+- Concatenates different parts of a longer string in order to form a new string.
