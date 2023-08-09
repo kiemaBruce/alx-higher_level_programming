@@ -12,3 +12,5 @@
 - Prints a number to a precision of 2 digits.
 ### 5-print_string.py
 - Prints a text a certain number of times.
+### 6-concat.py
+- Concatenates two strings into one.
