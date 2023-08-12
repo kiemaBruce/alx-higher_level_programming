@@ -1,9 +1,10 @@
 #!/usr/bin/python3
 import calculator_1 as calc
+
 if __name__ == "__main__":
     a = 10
     b = 5
-    print("{:d} + {:d} = {:d}".format(a, b, calc.add(a, b)))
-    print("{:d} - {:d} = {:d}".format(a, b, calc.sub(a, b)))
-    print("{:d} * {:d} = {:d}".format(a, b, calc.mul(a, b)))
-    print("{:d} / {:d} = {:d}".format(a, b, calc.div(a, b)))
+    print(f"{a:d} + {b:d} = {calc.add(a, b):d}")
+    print(f"{a:d} - {b:d} = {calc.sub(a, b):d}")
+    print(f"{a:d} * {b:d} = {calc.mul(a, b):d}")
+    print(f"{a:d} / {b:d} = {calc.div(a, b):d}")
