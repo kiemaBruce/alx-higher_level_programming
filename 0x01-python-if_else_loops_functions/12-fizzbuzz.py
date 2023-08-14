@@ -10,4 +10,4 @@ def fizzbuzz():
         if (i % 5 == 0):
             print("Buzz ", end="")
             continue
-        print(i, " ", end="")
+        print("{:d} ".format(i), end="")
