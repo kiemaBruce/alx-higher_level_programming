@@ -3,11 +3,13 @@ def safe_print_list(my_list=[], x=0):
     b = 0
 
     try:
-        for i in my_list:
+        while 1:
             if b == x:
                 break
-            print(i, end="" if i < x else "\n")
+            print(my_list[b], end="")
             b += 1
     except IndexError as r:
-        print(r.agrs[0])
+        print()  # newline only
+    else:
+        print()
     return b
