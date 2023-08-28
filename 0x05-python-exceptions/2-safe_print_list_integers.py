@@ -6,7 +6,7 @@ def safe_print_list_integers(my_list=[], x=0):
             if b == x:
                 break
             if type(my_list[b]) is int:
-                print("{:d}".format(b), end="")
+                print("{:d}".format(my_list[b]), end="")
             b += 1
     except TypeError as t:
         raise IndexError("list index out of range")
