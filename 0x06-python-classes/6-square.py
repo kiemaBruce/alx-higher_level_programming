@@ -67,6 +67,7 @@ class Square:
         Args:
             value: to replace the current value of the self.position attribute
         """
+        te_s = "position must be a tuple of 2 positive integers"
         if isinstance(value, tuple):
             for i in value:
                 if isinstance(i, int):
@@ -77,9 +78,6 @@ class Square:
                             "position must be a tuple of 2 positive integers"
                         )
                 else:
-                    raise TypeError(
-                        "position must be a tuple of 2 positive\
-                            integers"
-                    )
+                    raise TypeError(te_s)
         else:
             raise TypeError("position must be a tuple of 2 positive integers")
