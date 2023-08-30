@@ -21,18 +21,18 @@ class Square:
         Returns:
             the square of self.size
         """
-        if type(self.size) is int:
-            if self.size < 0:
+        if type(self.__size) is int:
+            if self.__size < 0:
                 raise ValueError("size must be >= 0")
             else:
-                area = self.size * self.size
+                area = self.__size * self.__size
                 return area
         else:
             raise TypeError("size must be an integer")
 
     def size(self):
         """getter for the size attribute"""
-        return self._size
+        return self.__size
 
     def size(self, value):
         """setter for self.size attribute
@@ -43,7 +43,7 @@ class Square:
             if value < 0:
                 raise ValueError("size must be >= 0")
             else:
-                self.size = value
+                self.__size = value
         else:
             raise TypeError("size must be an integer")
 
@@ -53,10 +53,10 @@ class Square:
         if self.size == 0:
             print()
         else:
-            for i in range(0, self.size):
+            for i in range(0, self.__size):
                 print(pos_string, end="")
-                for i in range(0, self.size):
-                    print("#", end="\n" if i == self.size - 1 else "")
+                for i in range(0, self.__size):
+                    print("#", end="\n" if i == self.__size - 1 else "")
 
     def position(self):
         """getter for self.position attribute"""
