@@ -36,3 +36,6 @@ TypeError: add_integer() missing 1 required positional argument: 'a'
 >>> module.add_integer(float('NaN'))
 Traceback (most recent call last):
 ValueError: cannot convert float NaN to integer
+>>> module.add_integer(1.0e309, 2)
+Traceback (most recent call last):
+OverflowError: cannot convert float infinity to integer
