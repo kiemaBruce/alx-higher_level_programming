@@ -39,3 +39,9 @@ ZeroDivisionError: division by zero
 >>> module.matrix_divided([[1, 2, 3], [2, 4, 6], [3, 6, 9]], True)
 Traceback (most recent call last):
 TypeError: div must be a number
+>>> module.matrix_divided([[1, 2, 3], [2, 4, 6], [3, 6, 9]])
+Traceback (most recent call last):
+TypeError: matrix_divided() missing 1 required positional argument: 'div'
+>>> module.matrix_divided(3)
+Traceback (most recent call last):
+TypeError: matrix_divided() missing 1 required positional argument: 'div'
