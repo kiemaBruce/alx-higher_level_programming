@@ -68,6 +68,8 @@ class Rectangle:
 
     def __str__(self):
         """Prints the rectangle using '#'"""
+        if self.__width == 0 or self.__height == 0:
+            return ""
         ret_s = ""
         for i in range(self.__height):
             for j in range(self.__width):
