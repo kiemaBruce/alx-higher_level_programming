@@ -37,3 +37,8 @@ AttributeError: 'str' object has no attribute 'print_sorted'
 >>> numbers.print_sorted()
 Traceback (most recent call last):
 TypeError: '<' not supported between instances of 'str' and 'int'
+>>> numbers.remove("Hehe")
+>>> numbers.append(1.2)
+>>> numbers.print_sorted()
+Traceback (most recent call last):
+ValueError: Unknown format code 'd' for object of type 'float'
