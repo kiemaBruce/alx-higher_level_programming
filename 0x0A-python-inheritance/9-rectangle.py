@@ -46,5 +46,6 @@ class Rectangle(BaseGeometry):
         return self.__width * self.__height
 
     def __str__(self):
-        """Returns a user-readable string representation of the Rectangle object."""
+        """Returns user-readable string representation of Rectangle object.
+        """
         return "[Rectangle] " + f"{self.__width}/{self.__height}"
