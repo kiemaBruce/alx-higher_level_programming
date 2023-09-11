@@ -1,0 +1,36 @@
+>>> import os, sys, importlib
+>>> os.chdir('..')
+>>> new_dir = os.getcwd()
+>>> sys.path.append(new_dir)
+>>> mod_name = '7-base_geometry'
+>>> module = importlib.import_module(mod_name)
+>>> Base = module.BaseGeometry
+>>> #first test for calling the method on the class instead of an instance of the class
+>>> Base.integer_validator()
+Traceback (most recent call last):
+TypeError: integer_validator() missing 3 required positional arguments: 'self', 'name', and 'value'
+>>> Base.integer_validator("T")
+Traceback (most recent call last):
+TypeError: integer_validator() missing 2 required positional arguments: 'name' and 'value'
+>>> Base.integer_validator("B", 25)
+Traceback (most recent call last):
+TypeError: integer_validator() missing 1 required positional argument: 'value'
+>>> #Then test for calling the object on an instance of the class
+>>> ins = Base()
+>>> ins.integer_validator("age", 30)
+>>> ins.integer_validator("age")
+Traceback (most recent call last):
+TypeError: integer_validator() missing 1 required positional argument: 'value'
+>>> ins.integer_validator()
+Traceback (most recent call last):
+TypeError: integer_validator() missing 2 required positional arguments: 'name' and 'value'
+>>> #Test for wrong data types
+>>> ins.integer_validator("age", "old")
+Traceback (most recent call last):
+TypeError: age must be an integer
+>>> ins.integer_validator("age", -1)
+Traceback (most recent call last):
+ValueError: age must be greater than 0
+>>> ins.integer_validator(55, -1)
+Traceback (most recent call last):
+ValueError: Unknown format code 's' for object of type 'int'
