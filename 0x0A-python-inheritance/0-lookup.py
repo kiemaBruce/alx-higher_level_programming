@@ -9,4 +9,4 @@ def lookup(obj):
     Args:
             obj: the object whose attributes and methods are to be returned.
     """
-    return list(obj.__dict__)
+    return dir(obj)
