@@ -33,3 +33,7 @@ AttributeError: 'dict' object has no attribute 'print_sorted'
 >>> name.print_sorted()
 Traceback (most recent call last):
 AttributeError: 'str' object has no attribute 'print_sorted'
+>>> numbers.append("Hehe")
+>>> numbers.print_sorted()
+Traceback (most recent call last):
+TypeError: '<' not supported between instances of 'str' and 'int'
