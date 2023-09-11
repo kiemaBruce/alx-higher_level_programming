@@ -15,3 +15,7 @@
 >>> 1.print_sorted()
 Traceback (most recent call last):
 SyntaxError: invalid syntax
+>>> name = "champion"
+>>> name.print_sorted()
+Traceback (most recent call last):
+AttributeError: 'str' object has no attribute 'print_sorted'
