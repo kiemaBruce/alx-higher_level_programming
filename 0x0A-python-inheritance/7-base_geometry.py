@@ -5,7 +5,7 @@ This module defines the BaseGeometry class.
 
 
 class BaseGeometry:
-    """Contains an instance method that raises an error."""
+    """Definition of the BaseGeometry class."""
 
     def area(self):
         """Raises an exception."""
@@ -18,7 +18,8 @@ class BaseGeometry:
                 name (str): identifier of the value.
         Raises:
                 TypeError: if value is not an integer.
-                ValueError: if value is not greater than 0.
+                ValueError: if value is not greater than 0 or if name is not a
+                string.
         """
         if not type(value) is int:
             raise TypeError(f"{name:s} must be an integer")
