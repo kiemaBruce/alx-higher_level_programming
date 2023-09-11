@@ -1,4 +1,9 @@
 #!/usr/bin/python3
+"""
+This module contains the definition of the is_same_class method.
+"""
+
+
 def is_same_class(obj, a_class):
     """Determines whether an object is exactly an instance of a class
 
