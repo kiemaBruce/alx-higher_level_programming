@@ -6,11 +6,12 @@
 >>> module = importlib.import_module(mod_name)
 >>> numbers = module.MyList()
 >>> numbers.append(1)
+>>> numbers.append(4)
 >>> numbers.append(2)
 >>> numbers.append(3)
->>> numbers.append(4)
+>>> numbers.append(5)
 >>> numbers.print_sorted()
-[4, 3, 2, 1]
->>> 1.module.print_sorted()
+[1, 2, 3, 4, 5]
+>>> 1.print_sorted()
 Traceback (most recent call last):
 SyntaxError: invalid syntax
