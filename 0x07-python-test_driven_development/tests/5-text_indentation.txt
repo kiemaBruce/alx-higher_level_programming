@@ -1,0 +1,20 @@
+>>> import sys, os, importlib
+>>> os.chdir('..')
+>>> new_dir = os.getcwd()
+>>> sys.path.append(new_dir)
+>>> mod_name = '5-text_indentation'
+>>> module = importlib.import_module(mod_name)
+>>> module.text_indentation()
+Traceback (most recent call last):
+TypeError: text_indentation() missing 1 required positional argument: 'text'
+>>> module.text_indentation("Bruce. Bloom? When: hope")
+Bruce
+<BLANKLINE>
+Bloom
+<BLANKLINE>
+When
+<BLANKLINE>
+hope
+>>> module.text_indentation(1)
+Traceback (most recent call last):
+TypeError: text must be a string
