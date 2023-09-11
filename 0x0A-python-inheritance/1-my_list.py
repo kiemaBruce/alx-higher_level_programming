@@ -10,4 +10,10 @@ class MyList(list):
     """
     def print_sorted(self):
         """Prints a list in reverse order."""
-        print(sorted(self))
+        new_list = sorted(self)
+        print("[", end="")
+        for index, value in enumerate(new_list):
+            print(f"{value:d}", end="")
+            if index != len(self) - 1:
+                print(", ", end="")
+        print("]")
