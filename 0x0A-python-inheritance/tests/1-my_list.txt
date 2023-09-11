@@ -19,3 +19,6 @@ SyntaxError: invalid syntax
 >>> name.print_sorted()
 Traceback (most recent call last):
 AttributeError: 'str' object has no attribute 'print_sorted'
+>>> print_sorted()
+Traceback (most recent call last):
+NameError: name 'print_sorted' is not defined
