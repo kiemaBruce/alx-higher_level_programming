@@ -29,15 +29,41 @@ class TestRectangle(unittest.TestCase):
             str(con.exception),
             "__init__() missing 1 required positional argument: 'height'",
         )
-        with self.assertRaises(TypeError) as con2:
+        with self.assertRaises(TypeError) as con:
             res = Rectangle()
         self.assertEqual(
-            str(con2.exception),
+            str(con.exception),
             (
                 "__init__() missing 2 required positional "
                 "arguments: 'width' and 'height'"
             ),
         )
+        # Check for wrong values.
+        self.assertRaises(TypeError, Rectangle, 's', 2)
+        with self.assertRaises(TypeError) as con:
+            res = Rectangle('s', 2)
+        self.assertEqual(str(con.exception), "width must be an integer")
+        with self.assertRaises(TypeError) as con:
+            Rectangle(2, 's')
+        self.assertEqual(str(con.exception), "height must be an integer")
+        with self.assertRaises(TypeError) as con:
+            Rectangle(2, 3, 's')
+        self.assertEqual(str(con.exception), "x must be an integer")
+        with self.assertRaises(TypeError) as con:
+            Rectangle(2, 3, 4, 'l')
+        self.assertEqual(str(con.exception), "y must be an integer")
+        with self.assertRaises(ValueError) as con:
+            Rectangle(0, 2)
+        self.assertEqual(str(con.exception), "width must be > 0")
+        with self.assertRaises(ValueError) as con:
+            Rectangle(2, -1)
+        self.assertEqual(str(con.exception), "height must be > 0")
+        with self.assertRaises(ValueError) as con:
+            Rectangle(2, 1, -1)
+        self.assertEqual(str(con.exception), "x must be >= 0")
+        with self.assertRaises(ValueError) as con:
+            Rectangle(2, 1, 4, -2)
+        self.assertEqual(str(con.exception), "y must be >= 0")
 
     def test_setters(self):
         """Tests whether attribute setters work as intended."""
