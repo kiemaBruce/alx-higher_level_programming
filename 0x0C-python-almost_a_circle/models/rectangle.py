@@ -3,7 +3,6 @@
 This module defines the Rectangle class.
 """
 
-
 from .base import Base
 
 
@@ -74,13 +73,16 @@ class Rectangle(Base):
         self.__y = value
 
     def integer_validator(self, name, value):
-        """ Validates the width, height, x and y attributes.
-        """
+        """Validates the width, height, x and y attributes."""
         if not type(value) is int:
             raise TypeError(f"{name} must be an integer")
         if name == "width" or name == "height":
             if value <= 0:
                 raise ValueError(f"{name} must be > 0")
-        if name == 'x' or name == 'y':
+        if name == "x" or name == "y":
             if value < 0:
                 raise ValueError(f"{name} must be >= 0")
+
+    def area(self):
+        """Returns the area of the Rectangle instance."""
+        return self.__width * self.__height
