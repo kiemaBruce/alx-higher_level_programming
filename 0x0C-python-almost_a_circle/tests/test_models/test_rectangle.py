@@ -17,7 +17,7 @@ class TestRectangle(unittest.TestCase):
         """Tests whether all Rectangle attributes have been initialized
         properly.
         """
-        rec1 = Rectangle(2, 5)
+        rec1 = Rectangle(2, 5, 0, 0, 1)
         self.assertEqual(rec1.width, 2)
         self.assertEqual(rec1.height, 5)
         self.assertEqual(rec1.x, 0)
@@ -38,19 +38,22 @@ class TestRectangle(unittest.TestCase):
                 "arguments: 'width' and 'height'"
             ),
         )
+
+    def test_integer_validator(self):
+        """Tests whether integer validator works as intended."""
         # Check for wrong values.
-        self.assertRaises(TypeError, Rectangle, 's', 2)
+        self.assertRaises(TypeError, Rectangle, "s", 2)
         with self.assertRaises(TypeError) as con:
-            res = Rectangle('s', 2)
+            res = Rectangle("s", 2)
         self.assertEqual(str(con.exception), "width must be an integer")
         with self.assertRaises(TypeError) as con:
-            Rectangle(2, 's')
+            Rectangle(2, "s")
         self.assertEqual(str(con.exception), "height must be an integer")
         with self.assertRaises(TypeError) as con:
-            Rectangle(2, 3, 's')
+            Rectangle(2, 3, "s")
         self.assertEqual(str(con.exception), "x must be an integer")
         with self.assertRaises(TypeError) as con:
-            Rectangle(2, 3, 4, 'l')
+            Rectangle(2, 3, 4, "l")
         self.assertEqual(str(con.exception), "y must be an integer")
         with self.assertRaises(ValueError) as con:
             Rectangle(0, 2)
@@ -76,3 +79,8 @@ class TestRectangle(unittest.TestCase):
         self.assertEqual(rec2.height, 33)
         self.assertEqual(rec2.x, 9)
         self.assertEqual(rec2.y, 11)
+
+    def test_area(self):
+        """Tests whether area is returned correctly."""
+        rec1 = Rectangle(2, 5)
+        self.assertEqual(rec1.area(), 10)
