@@ -14,8 +14,8 @@ class Rectangle(Base):
         Args:
                 width (int): width of the Rectangle.
                 height (int): height of the Rectangle.
-                x: extra argument.
-                y: second extra argument.
+                x (int): extra argument.
+                y (int): second extra argument.
         """
         super().__init__(id)
         self.integer_validator("width", width)
