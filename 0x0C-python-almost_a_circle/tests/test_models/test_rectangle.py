@@ -57,7 +57,21 @@ class TestRectangle(unittest.TestCase):
         self.assertEqual(str(con.exception), "y must be an integer")
         with self.assertRaises(ValueError) as con:
             Rectangle(0, 2)
-        self.assertEqual(str(con.exception), "width must be > 0")
+        with self.assertRaises(TypeError) as con:
+            Rectangle(2, True)
+        self.assertEqual(str(con.exception), "height must be an integer")
+        with self.assertRaises(TypeError) as con:
+            Rectangle(2, [1, 2])
+        self.assertEqual(str(con.exception), "height must be an integer")
+        with self.assertRaises(TypeError) as con:
+            Rectangle(2, (1, 2, 3))
+        self.assertEqual(str(con.exception), "height must be an integer")
+        with self.assertRaises(TypeError) as con:
+            Rectangle(2, {"hope": True, "age": 23})
+        self.assertEqual(str(con.exception), "height must be an integer")
+        with self.assertRaises(TypeError) as con:
+            Rectangle(2, None)
+        self.assertEqual(str(con.exception), "height must be an integer")
         with self.assertRaises(ValueError) as con:
             Rectangle(2, -1)
         self.assertEqual(str(con.exception), "height must be > 0")
@@ -67,6 +81,33 @@ class TestRectangle(unittest.TestCase):
         with self.assertRaises(ValueError) as con:
             Rectangle(2, 1, 4, -2)
         self.assertEqual(str(con.exception), "y must be >= 0")
+        rec1 = Rectangle(34, 2)
+        with self.assertRaises(ValueError) as con:
+            rec1.integer_validator("width", 0)
+        self.assertEqual(str(con.exception), "width must be > 0")
+        with self.assertRaises(ValueError) as con:
+            rec1.integer_validator("height", 0)
+        self.assertEqual(str(con.exception), "height must be > 0")
+        with self.assertRaises(ValueError) as con:
+            rec1.integer_validator("x", -1)
+        self.assertEqual(str(con.exception), "x must be >= 0")
+        with self.assertRaises(ValueError) as con:
+            rec1.integer_validator("y", -1)
+        self.assertEqual(str(con.exception), "y must be >= 0")
+        with self.assertRaises(TypeError) as con:
+            rec1.integer_validator()
+        self.assertEqual(
+            str(con.exception),
+            "integer_validator()"
+            " missing 2 required positional arguments: 'name' and 'value'",
+        )
+        with self.assertRaises(TypeError) as con:
+            rec1.integer_validator(2)
+        self.assertEqual(
+            str(con.exception),
+            "integer_validator()" " missing 1 required positional"
+            " argument: 'value'",
+        )
 
     def test_setters(self):
         """Tests whether attribute setters work as intended."""
