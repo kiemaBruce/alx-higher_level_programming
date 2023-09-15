@@ -8,8 +8,6 @@ import unittest
 import os
 from models.base import Base
 
-os.chdir("../..")
-
 
 class TestBase(unittest.TestCase):
     """
@@ -17,8 +15,7 @@ class TestBase(unittest.TestCase):
     """
 
     def test_init(self):
-        """Tests whether the id is properly initialized.
-        """
+        """Tests whether the id is properly initialized."""
         base1 = Base(24)
         self.assertEqual(base1.id, 24)
         base2 = Base()
