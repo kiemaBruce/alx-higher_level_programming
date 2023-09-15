@@ -19,6 +19,11 @@ class Rectangle(Base):
                 y: second extra argument.
         """
         super().__init__(id)
+        self.integer_validator("width", width)
+        self.integer_validator("height", height)
+        self.integer_validator("x", x)
+        self.integer_validator("y", y)
+
         self.width = width
         self.height = height
         self.x = x
@@ -32,6 +37,7 @@ class Rectangle(Base):
     @width.setter
     def width(self, value):
         """Sets the self.__width attribute."""
+        self.integer_validator("width", value)
         self.__width = value
 
     @property
@@ -42,6 +48,7 @@ class Rectangle(Base):
     @height.setter
     def height(self, value):
         """Sets the self.__height attribute."""
+        self.integer_validator("height", value)
         self.__height = value
 
     @property
@@ -52,6 +59,7 @@ class Rectangle(Base):
     @x.setter
     def x(self, value):
         """Sets the self.__x attribute."""
+        self.integer_validator("x", value)
         self.__x = value
 
     @property
@@ -62,4 +70,17 @@ class Rectangle(Base):
     @y.setter
     def y(self, value):
         """Sets the self.__y attribute."""
+        self.integer_validator("y", value)
         self.__y = value
+
+    def integer_validator(self, name, value):
+        """ Validates the width, height, x and y attributes.
+        """
+        if not type(value) is int:
+            raise TypeError(f"{name} must be an integer")
+        if name == "width" or name == "height":
+            if value <= 0:
+                raise ValueError(f"{name} must be > 0")
+        if name == 'x' or name == 'y':
+            if value < 0:
+                raise ValueError(f"{name} must be >= 0")
