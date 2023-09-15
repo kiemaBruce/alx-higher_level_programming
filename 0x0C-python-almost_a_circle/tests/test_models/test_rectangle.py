@@ -5,6 +5,7 @@ This module includes unittests for the Rectangle class.
 
 
 import unittest
+import textwrap
 from models.base import Base
 from models.rectangle import Rectangle
 
@@ -22,8 +23,21 @@ class TestRectangle(unittest.TestCase):
         self.assertEqual(rec1.x, 0)
         self.assertEqual(rec1.y, 0)
         self.assertEqual(rec1.id, 1)
-        self.assertRaises(TypeError, Rectangle, 2)
-        self.assertRaises(TypeError, Rectangle)
+        with self.assertRaises(TypeError) as con:
+            res = Rectangle(2)
+        self.assertEqual(
+            str(con.exception),
+            "__init__() missing 1 required positional argument: 'height'",
+        )
+        with self.assertRaises(TypeError) as con2:
+            res = Rectangle()
+        self.assertEqual(
+            str(con2.exception),
+            (
+                "__init__() missing 2 required positional "
+                "arguments: 'width' and 'height'"
+            ),
+        )
 
     def test_setters(self):
         """Tests whether attribute setters work as intended."""
