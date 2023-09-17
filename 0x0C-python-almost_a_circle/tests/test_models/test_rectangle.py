@@ -148,3 +148,19 @@ class TestRectangle(unittest.TestCase):
             str(con.exception),
             "display() missing 1 required positional argument: 'self'",
         )
+
+    def test_str(self):
+        """Tests whether the __str__ method works as expected.
+        """
+        rec1 = Rectangle(4, 5)
+        with patch("sys.stdout", new_callable=io.StringIO) as mock_stdout:
+            print(rec1)
+            captured_output = mock_stdout.getvalue().strip()
+        self.assertEqual(captured_output,
+        "[Rectangle] (19) 0/0 - 4/5")
+        with self.assertRaises(TypeError) as con:
+            Rectangle.__str__()
+        self.assertEqual(
+            str(con.exception),
+            "__str__() missing 1 required positional argument: 'self'",
+        )
