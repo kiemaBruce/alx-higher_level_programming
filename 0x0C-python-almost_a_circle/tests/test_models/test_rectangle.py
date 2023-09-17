@@ -109,7 +109,7 @@ class TestRectangle(unittest.TestCase):
         self.assertEqual(
             str(con.exception),
             "integer_validator()" " missing 1 required positional"
-            " argument: 'value'",
+            " argument: 'value'"
         )
 
     def test_setters(self):
@@ -142,6 +142,11 @@ class TestRectangle(unittest.TestCase):
             rec1.display()
             captured_output = mock_stdout.getvalue()
         self.assertEqual(captured_output, "##\n##\n##\n")
+        rec1 = Rectangle(2, 3, 2, 1)
+        with patch("sys.stdout", new_callable=io.StringIO) as mock_stdout:
+            rec1.display()
+            captured_output = mock_stdout.getvalue()
+        self.assertEqual(captured_output, "\n  ##\n  ##\n  ##\n")
         with self.assertRaises(TypeError) as con:
             Rectangle.display()
         self.assertEqual(
@@ -150,14 +155,12 @@ class TestRectangle(unittest.TestCase):
         )
 
     def test_str(self):
-        """Tests whether the __str__ method works as expected.
-        """
+        """Tests whether the __str__ method works as expected."""
         rec1 = Rectangle(4, 5)
         with patch("sys.stdout", new_callable=io.StringIO) as mock_stdout:
             print(rec1)
             captured_output = mock_stdout.getvalue().strip()
-        self.assertEqual(captured_output,
-        "[Rectangle] (19) 0/0 - 4/5")
+        self.assertEqual(captured_output, "[Rectangle] (20) 0/0 - 4/5")
         with self.assertRaises(TypeError) as con:
             Rectangle.__str__()
         self.assertEqual(
