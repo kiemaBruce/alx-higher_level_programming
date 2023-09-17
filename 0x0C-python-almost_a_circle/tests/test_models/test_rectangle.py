@@ -167,3 +167,47 @@ class TestRectangle(unittest.TestCase):
             str(con.exception),
             "__str__() missing 1 required positional argument: 'self'",
         )
+
+    def test_update(self):
+        """Tests whether the update method works as intended.
+        """
+        rec1 = Rectangle(2, 5)
+        self.assertEqual((rec1.id, rec1.width, rec1.height), (21, 2, 5))
+        rec1.update()
+        self.assertEqual(
+            (rec1.id, rec1.width, rec1.height, rec1.x, rec1.y),
+            (21, 2, 5, 0, 0)
+        )
+        rec1.update(1)
+        self.assertEqual(rec1.id, 1)
+        rec1.update(1, 6)
+        self.assertEqual((rec1.id, rec1.width), (1, 6))
+        rec1.update(1, 6, 7)
+        self.assertEqual((rec1.id, rec1.width, rec1.height), (1, 6, 7))
+        rec1.update(1, 6, 7, 4)
+        self.assertEqual(
+            (rec1.id, rec1.width, rec1.height, rec1.x), (1, 6, 7, 4)
+        )
+        rec1.update(1, 6, 7, 4, 5)
+        self.assertEqual(
+            (rec1.id, rec1.width, rec1.height, rec1.x, rec1.y),
+            (1, 6, 7, 4, 5)
+        )
+        with self.assertRaises(ValueError) as con:
+            rec1.update(1, -3)
+        self.assertEqual(str(con.exception), "width must be > 0")
+        with self.assertRaises(ValueError) as con:
+            rec1.update(1, 3, -5)
+        self.assertEqual(str(con.exception), "height must be > 0")
+        with self.assertRaises(ValueError) as con:
+            rec1.update(2, 3, 4, -1)
+        self.assertEqual(str(con.exception), "x must be >= 0")
+        with self.assertRaises(ValueError) as con:
+            rec1.update(1, 3, 8, 3, -1)
+        self.assertEqual(str(con.exception), "y must be >= 0")
+        with self.assertRaises(TypeError) as con:
+            Rectangle.update()
+        self.assertEqual(
+            str(con.exception),
+            "update() missing 1 required positional argument: 'self'",
+        )
