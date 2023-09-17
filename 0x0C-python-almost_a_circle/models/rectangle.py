@@ -113,7 +113,7 @@ class Rectangle(Base):
     def update(self, *args, **kwargs):
         """ Updates Rectangle attributes.
         """
-        if args and len(args != 0):
+        if args and len(args) != 0:
             for i in range(len(args)):
                 if i == 0:
                     self.id = args[0]
