@@ -211,3 +211,21 @@ class TestRectangle(unittest.TestCase):
             str(con.exception),
             "update() missing 1 required positional argument: 'self'",
         )
+        rec1.update(height=2)
+        self.assertEqual(rec1.height, 2)
+        rec1.update(width=21, x=11)
+        self.assertEqual((rec1.width, rec1.x), (21, 11))
+        rec1.update(x=15, id=90, y=12)
+        self.assertEqual((rec1.x, rec1.id, rec1.y), (15, 90, 12))
+        rec1.update(x=15, id=90, y=12, height=87)
+        self.assertEqual(
+            (rec1.x, rec1.id, rec1.y, rec1.height),
+            (15, 90, 12, 87)
+        )
+        rec1.update(x=15, id=90, y=12, height=87, width=9)
+        self.assertEqual(
+            (rec1.x, rec1.id, rec1.y, rec1.height, rec1.width),
+            (15, 90, 12, 87, 9)
+        )
+        rec1.update(1, 23, 12, height=44)
+        self.assertEqual(rec1.height, 12)
