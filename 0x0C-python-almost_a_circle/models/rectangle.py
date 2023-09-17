@@ -88,10 +88,19 @@ class Rectangle(Base):
         return self.__width * self.__height
 
     def display(self):
-        """Prints out the Rectangle instance to stdout using '#'.
-        """
+        """Prints out the Rectangle instance to stdout using '#'."""
         for i in range(self.__height):
             for j in range(self.__width):
-                print('#', end="")
+                print("#", end="")
                 if j == self.__width - 1:
                     print()
+
+    def __str__(self):
+        """Returns a user-readable string representation of a Rectangle object.
+        """
+        ret_s = (
+            "[Rectangle] "
+            + f"({self.id}) {self.__x}/{self.__y} - "
+            + f"{self.__width}/{self.__height}"
+        )
+        return ret_s
