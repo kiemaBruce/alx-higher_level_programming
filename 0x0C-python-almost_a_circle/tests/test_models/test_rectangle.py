@@ -8,6 +8,9 @@ import unittest
 import textwrap
 from models.base import Base
 from models.rectangle import Rectangle
+from unittest.mock import patch
+import sys
+import io
 
 
 class TestRectangle(unittest.TestCase):
@@ -125,3 +128,23 @@ class TestRectangle(unittest.TestCase):
         """Tests whether area is returned correctly."""
         rec1 = Rectangle(2, 5)
         self.assertEqual(rec1.area(), 10)
+        with self.assertRaises(TypeError) as con:
+            Rectangle.area()
+        self.assertEqual(
+            str(con.exception),
+            "area() missing 1 required positional argument: 'self'"
+        )
+
+    def test_display(self):
+        """Test if the display method of Rectangle class works as expected."""
+        rec1 = Rectangle(2, 3)
+        with patch("sys.stdout", new_callable=io.StringIO) as mock_stdout:
+            rec1.display()
+            captured_output = mock_stdout.getvalue()
+        self.assertEqual(captured_output, "##\n##\n##\n")
+        with self.assertRaises(TypeError) as con:
+            Rectangle.display()
+        self.assertEqual(
+            str(con.exception),
+            "display() missing 1 required positional argument: 'self'",
+        )
