@@ -103,3 +103,17 @@ class TestSquare(unittest.TestCase):
         )
         s1.update(1, 23, 12, size=44)
         self.assertEqual(s1.size, 23)
+
+    def test_to_dictionary(self):
+        """ Tests the to_dictionary method of Square class."""
+        r1 = Square(2, 0, 0, 2)
+        comp_dict = {"id": 2, "size": 2, "x": 0, "y": 0}
+        r1_dict = r1.to_dictionary()
+        self.assertEqual(comp_dict, r1_dict)
+        with self.assertRaises(TypeError) as con:
+            Square.to_dictionary()
+        self.assertEqual(
+            str(con.exception),
+            "to_dictionary() missing 1 required positional argument: 'self'"
+        )
+        self.assertEqual(type(comp_dict), type(r1_dict))
