@@ -33,3 +33,15 @@ class TestBase(unittest.TestCase):
         )
         self.assertEqual(base1.to_json_string(comp_list), json_comp_list)
         self.assertEqual(Base.to_json_string(comp_list), json_comp_list)
+
+    def test_save_to_file(self):
+        """ Tests the save_to_file() method if Base class.
+        """
+        lis = [{"id": 8, "height": 8, "width": 2, "x": 4, "y": 9}]
+        filename = "Base.json"
+        Base.save_to_file(lis)
+        with open(filename, "r", encoding="utf-8") as myfile:
+            self.assertEqual(
+                myfile.read(),
+                '[{"id": 8, "height": 8, "width": 2, "x": 4, "y": 9}]'
+            )
