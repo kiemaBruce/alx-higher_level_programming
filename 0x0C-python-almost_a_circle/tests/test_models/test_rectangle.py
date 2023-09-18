@@ -122,6 +122,12 @@ class TestRectangle(unittest.TestCase):
         self.assertEqual(rec2.height, 33)
         self.assertEqual(rec2.x, 9)
         self.assertEqual(rec2.y, 11)
+        with self.assertRaises(TypeError) as con:
+            rec2.width = 's'
+        self.assertEqual(str(con.exception), "width must be an integer")
+        with self.assertRaises(ValueError) as con:
+            rec2.width = 0
+        self.assertEqual(str(con.exception), "width must be > 0")
 
     def test_area(self):
         """Tests whether area is returned correctly."""
