@@ -44,4 +44,4 @@ class TestBase(unittest.TestCase):
             self.assertEqual(
                 myfile.read(),
                 '[{"id": 8, "height": 8, "width": 2, "x": 4, "y": 9}]'
-            )
+            ) 
