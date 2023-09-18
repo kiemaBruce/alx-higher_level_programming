@@ -104,8 +104,9 @@ class Rectangle(Base):
     def __str__(self):
         """Returns a user-readable string representation of a Rectangle object.
         """
+        class_name = self.__class__.__name__
         ret_s = (
-            "[Rectangle] "
+            f"[{class_name}] "
             + f"({self.id}) {self.__x}/{self.__y} - "
             + f"{self.__width}/{self.__height}"
         )
