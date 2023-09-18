@@ -32,3 +32,43 @@ class Square(Rectangle):
             + f"{self.width}"
         )
         return ret_s
+
+    @property
+    def size(self):
+        """ Returns the 'size' attribute of the Square object.
+        """
+        return self._Rectangle__width
+
+    @size.setter
+    def size(self, value):
+        """ Sets the value of the size attribute of the Square object.
+        Args:
+            value (int): the value to be assigned to the size attribute.
+        """
+        self.integer_validator("width", value)
+        self._Rectangle__width = value
+        self._Rectangle__height = value
+
+    def update(self, *args, **kwargs):
+        """Updates Square attributes."""
+        if args and len(args) != 0:
+            for i in range(len(args)):
+                if i == 0:
+                    self.id = args[0]
+                if i == 1:
+                    self.size = args[1]
+                if i == 2:
+                    self.x = args[2]
+                if i == 3:
+                    self.y = args[3]
+        else:
+            if kwargs:
+                for key in kwargs:
+                    if key == "id":
+                        self.id = kwargs[key]
+                    if key == "size":
+                        self.size = kwargs[key]
+                    if key == "x":
+                        self.x = kwargs[key]
+                    if key == "y":
+                        self.y = kwargs[key]
