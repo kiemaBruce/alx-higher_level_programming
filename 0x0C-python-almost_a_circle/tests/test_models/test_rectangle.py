@@ -17,8 +17,7 @@ class TestRectangle(unittest.TestCase):
     """Tests the Rectangle class."""
 
     def test_init(self):
-        """Tests whether all Rectangle attributes have been initialized
-        properly.
+        """Tests for correct initialization of Rectangle attributes.
         """
         rec1 = Rectangle(2, 5, 0, 0, 1)
         self.assertEqual(rec1.width, 2)
