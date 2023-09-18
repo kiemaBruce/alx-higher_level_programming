@@ -65,3 +65,25 @@ class Base:
         if json_string is None or not json_string:
             return []
         return json.loads(json_string)
+
+    @classmethod
+    def create(cls, **dictionary):
+        """Returns an instance with attributes already set.
+        Args:
+            dictionary: a dictionary that contains the attributes to be set.
+        Return:
+            instance: an instance with attributes already set using dictionary
+        """
+        from .rectangle import Rectangle
+        from .square import Square
+        for key in dictionary:
+            if key == "size":
+                s1 = Square(6)
+                s1.update(**dictionary)
+                return s1
+                break
+            elif key == "width" or key == "height":
+                r1 = Rectangle(5, 7)
+                r1.update(**dictionary)
+                return r1
+                break
