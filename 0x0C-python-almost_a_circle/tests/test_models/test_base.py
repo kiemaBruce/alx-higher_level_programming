@@ -20,3 +20,16 @@ class TestBase(unittest.TestCase):
         self.assertEqual(base1.id, 24)
         base2 = Base()
         self.assertEqual(base2.id, 1)
+
+    def test_to_json_string(self):
+        """Tests the to_json_string method of Base class."""
+        base1 = Base(24)
+        comp_list = [
+            {"age": "young", "stat": "strength", "limit": 4, "schooled": True}
+        ]
+        json_comp_list = (
+            '[{"age": "young", "stat": "strength",'
+            ' "limit": 4, "schooled": true}]'
+        )
+        self.assertEqual(base1.to_json_string(comp_list), json_comp_list)
+        self.assertEqual(Base.to_json_string(comp_list), json_comp_list)
