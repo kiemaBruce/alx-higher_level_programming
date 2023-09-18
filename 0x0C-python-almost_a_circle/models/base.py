@@ -31,17 +31,15 @@ class Base:
             str: the JSON string equivalent of list_dictionaries. If
             list_dictionaries is None or empty "[]" is returned.
         """
-        if list_dictionaries is None or len(list_dictionaries) == 0:
-            return "[]"
         ret_list = []
-        json_s = ""
-        for item in list_dictionaries:
-            try:
-                item.to_dictionary()
-            except AttributeError:
-                ret_list.append(item)
-            else:
-                ret_list.append(item.to_dictionary())
+        if list_dictionaries is not None and len(list_dictionaries) != 0:
+            for item in list_dictionaries:
+                try:
+                    item.to_dictionary()
+                except AttributeError:
+                    ret_list.append(item)
+                else:
+                    ret_list.append(item.to_dictionary())
         return json.dumps(ret_list)
 
     @classmethod
