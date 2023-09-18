@@ -165,7 +165,7 @@ class TestRectangle(unittest.TestCase):
         with patch("sys.stdout", new_callable=io.StringIO) as mock_stdout:
             print(rec1)
             captured_output = mock_stdout.getvalue().strip()
-        self.assertEqual(captured_output, "[Rectangle] (20) 0/0 - 4/5")
+        self.assertEqual(captured_output, "[Rectangle] (21) 0/0 - 4/5")
         with self.assertRaises(TypeError) as con:
             Rectangle.__str__()
         self.assertEqual(
@@ -248,3 +248,11 @@ class TestRectangle(unittest.TestCase):
             "to_dictionary() missing 1 required positional argument: 'self'"
         )
         self.assertEqual(type(comp_dict), type(r1_dict))
+
+    def test_create(self):
+        """Tests the create() method in Rectangle class.
+        """
+        r1 = Rectangle(3, 5, 0, 0, 7)
+        r1_dictionary = r1.to_dictionary()
+        r2 = Rectangle.create(**r1_dictionary)
+        self.assertEqual(str(r1), str(r2))
