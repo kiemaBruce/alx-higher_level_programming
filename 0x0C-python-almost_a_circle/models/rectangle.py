@@ -14,8 +14,9 @@ class Rectangle(Base):
         Args:
                 width (int): width of the Rectangle.
                 height (int): height of the Rectangle.
-                x (int): extra argument.
-                y (int): second extra argument.
+                x (int): horizontal offset when printing a Rectangle object.
+                y (int): vertical offset when printing a Rectangle object.
+                id: identifies the Rectangle object.
         """
         super().__init__(id)
         self.integer_validator("width", width)
