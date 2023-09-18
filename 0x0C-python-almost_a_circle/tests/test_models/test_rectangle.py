@@ -176,7 +176,7 @@ class TestRectangle(unittest.TestCase):
     def test_update(self):
         """Tests whether the update method works as intended.
         """
-        rec1 = Rectangle(2, 5)
+        rec1 = Rectangle(2, 5, 0, 0, 21)
         self.assertEqual((rec1.id, rec1.width, rec1.height), (21, 2, 5))
         rec1.update()
         self.assertEqual(
@@ -234,3 +234,17 @@ class TestRectangle(unittest.TestCase):
         )
         rec1.update(1, 23, 12, height=44)
         self.assertEqual(rec1.height, 12)
+
+    def test_to_dictionary(self):
+        """ Tests the to_dictionary method of Rectangle class."""
+        r1 = Rectangle(2, 5, 0, 0, 2)
+        comp_dict = {"id": 2, "width": 2, "height": 5, "x": 0, "y": 0}
+        r1_dict = r1.to_dictionary()
+        self.assertEqual(comp_dict, r1_dict)
+        with self.assertRaises(TypeError) as con:
+            Rectangle.to_dictionary()
+        self.assertEqual(
+            str(con.exception),
+            "to_dictionary() missing 1 required positional argument: 'self'"
+        )
+        self.assertEqual(type(comp_dict), type(r1_dict))
