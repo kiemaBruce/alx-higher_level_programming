@@ -35,10 +35,25 @@ class TestSquare(unittest.TestCase):
         with patch("sys.stdout", new_callable=io.StringIO) as mock_stdout:
             print(s1)
             captured_output = mock_stdout.getvalue().strip()
-        self.assertEqual(captured_output, "[Square] (1) 0/0 - 5")
+        self.assertEqual(captured_output, "[Square] (3) 0/0 - 5")
         with self.assertRaises(TypeError) as con:
             Square.__str__()
         self.assertEqual(
             str(con.exception),
             "__str__() missing 1 required positional argument: 'self'",
         )
+
+    def test_sizesetterandgetter(self):
+        """Tests whether size setter and getter works as intended.
+        """
+        s1 = Square(6)
+        self.assertEqual(s1.size, 6)
+        s1.size = 8
+        self.assertEqual(s1.size, 8)
+        with self.assertRaises(TypeError) as con:
+            s1.size = 's'
+        self.assertEqual(str(con.exception), "width must be an integer")
+        s1 = Square(9)
+        with self.assertRaises(ValueError) as con2:
+            s1.size = 0
+        self.assertEqual(str(con2.exception), "width must be > 0")
