@@ -99,7 +99,7 @@ class Base:
         except FileNotFoundError:
             return []
         else:
-            list_from_file = json.load(myfile)
+            list_from_file = cls.from_json_string(myfile.read())
             for item in list_from_file:
                 ret_list.append(cls.create(**item))
             return ret_list
