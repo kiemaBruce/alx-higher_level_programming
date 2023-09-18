@@ -21,3 +21,14 @@ class Square(Rectangle):
                 id: Identifies the Square object.
         """
         super().__init__(size, size, x, y, id)
+
+    def __str__(self):
+        """Returns reaadable string representation of Square object.
+        """
+        class_name = self.__class__.__name__
+        ret_s = (
+            f"[{class_name}] "
+            + f"({self.id}) {self.x}/{self.y} - "
+            + f"{self.width}"
+        )
+        return ret_s
