@@ -161,11 +161,11 @@ class TestRectangle(unittest.TestCase):
 
     def test_str(self):
         """Tests whether the __str__ method works as expected."""
-        rec1 = Rectangle(4, 5)
+        rec1 = Rectangle(4, 5, 0, 0, 22)
         with patch("sys.stdout", new_callable=io.StringIO) as mock_stdout:
             print(rec1)
             captured_output = mock_stdout.getvalue().strip()
-        self.assertEqual(captured_output, "[Rectangle] (21) 0/0 - 4/5")
+        self.assertEqual(captured_output, "[Rectangle] (22) 0/0 - 4/5")
         with self.assertRaises(TypeError) as con:
             Rectangle.__str__()
         self.assertEqual(

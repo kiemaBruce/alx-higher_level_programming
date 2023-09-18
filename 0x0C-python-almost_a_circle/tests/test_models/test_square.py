@@ -31,11 +31,11 @@ class TestSquare(unittest.TestCase):
 
     def test_str(self):
         """Tests whether the __str__ method works as expected."""
-        s1 = Square(5)
+        s1 = Square(5, 0, 0, 26)
         with patch("sys.stdout", new_callable=io.StringIO) as mock_stdout:
             print(s1)
             captured_output = mock_stdout.getvalue().strip()
-        self.assertEqual(captured_output, "[Square] (4) 0/0 - 5")
+        self.assertEqual(captured_output, "[Square] (26) 0/0 - 5")
         with self.assertRaises(TypeError) as con:
             Square.__str__()
         self.assertEqual(
@@ -61,7 +61,7 @@ class TestSquare(unittest.TestCase):
     def test_update(self):
         """Tests the update method of Square class.
         """
-        s1 = Square(5)
+        s1 = Square(5, 0, 0, 5)
         self.assertEqual((s1.id, s1.size), (5, 5))
         s1.update()
         self.assertEqual(
