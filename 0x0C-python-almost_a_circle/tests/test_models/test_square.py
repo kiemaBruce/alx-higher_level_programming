@@ -124,3 +124,7 @@ class TestSquare(unittest.TestCase):
         s1_dictionary = s1.to_dictionary()
         s2 = Square.create(**s1_dictionary)
         self.assertEqual(str(s1), str(s2))
+
+
+if __name__ == '__main__':
+    unittest.main()

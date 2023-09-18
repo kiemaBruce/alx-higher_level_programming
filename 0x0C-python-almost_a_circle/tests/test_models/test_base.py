@@ -45,3 +45,7 @@ class TestBase(unittest.TestCase):
                 myfile.read(),
                 '[{"id": 8, "height": 8, "width": 2, "x": 4, "y": 9}]'
             )
+
+
+if __name__ == '__main__':
+    unittest.main()

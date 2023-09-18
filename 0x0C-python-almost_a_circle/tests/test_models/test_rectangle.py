@@ -256,3 +256,7 @@ class TestRectangle(unittest.TestCase):
         r1_dictionary = r1.to_dictionary()
         r2 = Rectangle.create(**r1_dictionary)
         self.assertEqual(str(r1), str(r2))
+
+
+if __name__ == '__main__':
+    unittest.main()
