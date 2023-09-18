@@ -35,7 +35,7 @@ class TestSquare(unittest.TestCase):
         with patch("sys.stdout", new_callable=io.StringIO) as mock_stdout:
             print(s1)
             captured_output = mock_stdout.getvalue().strip()
-        self.assertEqual(captured_output, "[Square] (3) 0/0 - 5")
+        self.assertEqual(captured_output, "[Square] (4) 0/0 - 5")
         with self.assertRaises(TypeError) as con:
             Square.__str__()
         self.assertEqual(
@@ -62,11 +62,11 @@ class TestSquare(unittest.TestCase):
         """Tests the update method of Square class.
         """
         s1 = Square(5)
-        self.assertEqual((s1.id, s1.size), (4, 5))
+        self.assertEqual((s1.id, s1.size), (5, 5))
         s1.update()
         self.assertEqual(
             (s1.id, s1.size, s1.x, s1.y),
-            (4, 5, 0, 0)
+            (5, 5, 0, 0)
         )
         s1.update(1)
         self.assertEqual(s1.id, 1)
@@ -117,3 +117,10 @@ class TestSquare(unittest.TestCase):
             "to_dictionary() missing 1 required positional argument: 'self'"
         )
         self.assertEqual(type(comp_dict), type(r1_dict))
+
+    def test_square(self):
+        """Tests create() method in Square class."""
+        s1 = Square(3, 5, 0, 7)
+        s1_dictionary = s1.to_dictionary()
+        s2 = Square.create(**s1_dictionary)
+        self.assertEqual(str(s1), str(s2))
