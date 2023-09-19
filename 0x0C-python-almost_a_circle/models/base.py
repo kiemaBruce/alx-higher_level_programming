@@ -4,6 +4,7 @@ Definition of the Base class.
 """
 
 import json
+import os
 
 
 class Base:
@@ -94,14 +95,10 @@ class Base:
         """
         filename = cls.__name__ + ".json"
         ret_list = []
-        try:
-            myfile = open(filename, "r", encoding="utf-8")
-        except FileNotFoundError:
-            return []
-        else:
+        if not os.path.exists(filename):
+            return empty_list
+        with open(filename, "r", encoding="utf-8") as myfile:
             list_from_file = cls.from_json_string(myfile.read())
             for item in list_from_file:
                 ret_list.append(cls.create(**item))
-            return ret_list
-        finally:
-            myfile.close()
+        return ret_list
