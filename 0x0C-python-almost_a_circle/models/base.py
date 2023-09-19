@@ -96,7 +96,7 @@ class Base:
         filename = cls.__name__ + ".json"
         ret_list = []
         if not os.path.exists(filename):
-            return empty_list
+            return ret_list
         with open(filename, "r", encoding="utf-8") as myfile:
             list_from_file = cls.from_json_string(myfile.read())
             for item in list_from_file:
