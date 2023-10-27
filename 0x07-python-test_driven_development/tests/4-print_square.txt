@@ -1,0 +1,34 @@
+>>> import os, sys
+>>> os.chdir("..")
+>>> cwd = os.getcwd()
+>>> sys.path.append(cwd)
+>>> print_square = __import__("4-print_square").print_square
+>>> print_square(3)
+###
+###
+###
+>>> print_square(0)
+>>> print_square()
+Traceback (most recent call last):
+TypeError: print_square() missing 1 required positional argument: 'size'
+>>> print_square("s")
+Traceback (most recent call last):
+TypeError: size must be an integer
+>>> print_square(True)
+Traceback (most recent call last):
+TypeError: size must be an integer
+>>> print_square((1, 2, 'yes'))
+Traceback (most recent call last):
+TypeError: size must be an integer
+>>> print_square({1, 2, 'yes'})
+Traceback (most recent call last):
+TypeError: size must be an integer
+>>> print_square({"home": 2014, "name": "Ooh", "feel": "the light"})
+Traceback (most recent call last):
+TypeError: size must be an integer
+>>> print_square(-1)
+Traceback (most recent call last):
+ValueError: size must be >= 0
+>>> print_square(-1.2)
+Traceback (most recent call last):
+TypeError: size must be an integer
