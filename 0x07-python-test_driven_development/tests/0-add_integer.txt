@@ -1,0 +1,27 @@
+>>> import os, sys
+>>> os.chdir("..")
+>>> cwd = os.getcwd()
+>>> sys.path.append(cwd)
+>>> add_integer = __import__("0-add_integer").add_integer
+>>> add_integer(2, 4)
+6
+>>> add_integer(2)
+100
+>>> add_integer("star")
+Traceback (most recent call last):
+TypeError: a must be an integer
+>>> add_integer(2, "star")
+Traceback (most recent call last):
+TypeError: b must be an integer
+>>> add_integer([1, 3, 4])
+Traceback (most recent call last):
+TypeError: a must be an integer
+>>> add_integer((1, 3, 4))
+Traceback (most recent call last):
+TypeError: a must be an integer
+>>> add_integer({"name": "King", "age": 34})
+Traceback (most recent call last):
+TypeError: a must be an integer
+>>> add_integer(True)
+Traceback (most recent call last):
+TypeError: a must be an integer
