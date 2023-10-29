@@ -1,0 +1,39 @@
+>>> import os, sys
+>>> os.chdir("..")
+>>> cwd = os.getcwd()
+>>> sys.path.append(cwd)
+>>> text_indentation = __import__("5-text_indentation").text_indentation
+>>> text_indentation("""Life's bittersweet but you've just got to make the most \
+... of it. The bitter times? They make the good times so much more worthwhile: \
+... bad friends? They make us appreciate the good ones even more.""")
+Life's bittersweet but you've just got to make the most of it.
+<BLANKLINE>
+The bitter times?
+<BLANKLINE>
+They make the good times so much more worthwhile:
+<BLANKLINE>
+bad friends?
+<BLANKLINE>
+They make us appreciate the good ones even more.
+<BLANKLINE>
+>>> text_indentation()
+Traceback (most recent call last):
+TypeError: text_indentation() missing 1 required positional argument: 'text'
+>>> text_indentation(1)
+Traceback (most recent call last):
+TypeError: text must be a string
+>>> text_indentation(True)
+Traceback (most recent call last):
+TypeError: text must be a string
+>>> text_indentation([2, 4, 5])
+Traceback (most recent call last):
+TypeError: text must be a string
+>>> text_indentation({"Queen": "Too much love will kill you", "song": "good"})
+Traceback (most recent call last):
+TypeError: text must be a string
+>>> text_indentation({1, "s", True})
+Traceback (most recent call last):
+TypeError: text must be a string
+>>> text_indentation((1, 2, "Bill"))
+Traceback (most recent call last):
+TypeError: text must be a string
