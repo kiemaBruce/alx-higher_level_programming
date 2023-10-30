@@ -76,4 +76,7 @@ class Rectangle:
     def __repr__(self):
         """Returns a string that can be used to reproduce the object.
         """
-        return "Rectangle(" + str(self.__width) + ", " + str(self.__height) + ")"
+        repr_str = ("Rectangle(" + str(self.__width) + ", "
+                    + str(self.__height) + ")"
+                    )
+        return repr_str
