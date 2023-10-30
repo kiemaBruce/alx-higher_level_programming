@@ -22,3 +22,9 @@ number of Rectangle attributes that have been created and not yet deleted or
 - Creates a public class attribute 'print_symbol' that determines which symbol
 will be used for the string representation of the Rectangle instance in the
 __str__ method.
+### 8-rectangle.py
+- Adds the 'bigger_or_equal(rect_1, rect_2)' static method that returns the
+Rectangle instance with the biggest area.
+### 9-rectangle.py
+- Adds the square(cls, size=0) class method which returns a Rectangle object with equal
+width and height equal to size (that is, a square).
