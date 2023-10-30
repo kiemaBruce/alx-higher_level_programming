@@ -38,7 +38,7 @@ class Rectangle:
         The setter raises a TypeError if height is not an int, and a ValueError
         if it is less than 0.
         """
-        return self.__width
+        return self.__height
 
     @height.setter
     def height(self, value):
