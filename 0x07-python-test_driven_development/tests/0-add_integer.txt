@@ -1,4 +1,4 @@
->>> import os, sys
+>>> import os, sys, math
 >>> os.chdir("..")
 >>> cwd = os.getcwd()
 >>> sys.path.append(cwd)
@@ -28,3 +28,6 @@ TypeError: a must be an integer
 >>> add_integer()
 Traceback (most recent call last):
 TypeError: add_integer() missing 1 required positional argument: 'a'
+>>> add_integer(math.nan)
+Traceback (most recent call last):
+ValueError: cannot convert float NaN to integer
