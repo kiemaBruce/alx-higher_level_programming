@@ -57,6 +57,7 @@ class TestMaxInteger(unittest.TestCase):
 
     def test_valid_values(self):
         """Tests max_integer() with list of valid values."""
+        self.assertEqual(max_integer([99, 2, 1]), 99)
         self.assertEqual(max_integer([1, 2, 99]), 99)
         self.assertEqual(max_integer([1, 2.2, 0.5]), 2.2)
         self.assertEqual(max_integer([True, 5]), 5)
