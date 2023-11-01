@@ -63,6 +63,7 @@ class TestMaxInteger(unittest.TestCase):
         self.assertEqual(max_integer([True, 5]), 5)
         self.assertEqual(max_integer([None]), None)
         self.assertEqual(max_integer(["s"]), "s")
+        self.assertEqual(max_integer([]), None)
 
     def test_arg_type(self):
         """Tests whether the argument is a list or not."""
