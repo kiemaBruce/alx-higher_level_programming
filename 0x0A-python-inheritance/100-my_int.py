@@ -12,7 +12,7 @@ class MyInt(int):
                 bool: True if self is not equal to value, and False if
                 self is equal to value.
         """
-        return super().__ne__(value)
+        return int.__ne__(self, value)
 
     def __ne__(self, value):
         """Inverts not equal to comparison operator for ints.
@@ -20,4 +20,4 @@ class MyInt(int):
                 bool: True if self is equal to value, and False if self
                 is not equal to value.
         """
-        return super().__eq__(value)
+        return int.__eq__(self, value)
