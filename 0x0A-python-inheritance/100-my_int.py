@@ -4,13 +4,13 @@
 
 
 class MyInt(int):
-    """Attributes and methods of MyInt class."""
+    """Contains attributes and methods of MyInt class."""
 
     def __eq__(self, value):
         """Inverts the equal comparison operator for ints.
         Returns:
                 bool: True if self is not equal to value, and False if
-        self is equal to value.
+                self is equal to value.
         """
         return super().__ne__(value)
 
