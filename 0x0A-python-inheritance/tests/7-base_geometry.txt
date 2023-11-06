@@ -22,3 +22,6 @@ TypeError: integer_validator() missing 2 required positional arguments: 'name' a
 >>> obj1.integer_validator("House")
 Traceback (most recent call last):
 TypeError: integer_validator() missing 1 required positional argument: 'value'
+>>> obj1.integer_validator(1, True)
+Traceback (most recent call last):
+ValueError: Unknown format code 's' for object of type 'int'
