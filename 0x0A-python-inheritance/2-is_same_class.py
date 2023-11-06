@@ -12,6 +12,11 @@ def is_same_class(obj, a_class):
             otherwise.
     """
     if isinstance(obj, a_class) and a_class.__name__ != "object":
+        if (
+            issubclass(obj.__class__, a_class)
+            and obj.__class__.__name__ != a_class.__name__
+        ):
+            return False
         return True
     else:
         return False
