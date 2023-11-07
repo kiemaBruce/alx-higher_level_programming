@@ -10,6 +10,8 @@
 [1, 7, 2, 4, 3, 10]
 >>> list1.print_sorted()
 [1, 2, 3, 4, 7, 10]
+>>> print(list1)
+[1, 7, 2, 4, 3, 10]
 >>> list1.append(True)
 >>> list1.print_sorted()
 [1, True, 2, 3, 4, 7, 10]
