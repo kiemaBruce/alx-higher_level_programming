@@ -1,4 +1,4 @@
-#!/usr/biin/python3
+#!/usr/bin/python3
 """Contains definition of MyInt class that inherits from int.
 """
 
@@ -12,7 +12,7 @@ class MyInt(int):
                 bool: True if self is not equal to value, and False if
                 self is equal to value.
         """
-        return int.__ne__(self, value)
+        return super().__ne__(value)
 
     def __ne__(self, value):
         """Inverts not equal to comparison operator for ints.
@@ -20,4 +20,4 @@ class MyInt(int):
                 bool: True if self is equal to value, and False if self
                 is not equal to value.
         """
-        return int.__eq__(self, value)
+        return super().__eq__(value)
