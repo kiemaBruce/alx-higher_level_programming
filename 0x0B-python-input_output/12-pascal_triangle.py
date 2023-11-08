@@ -10,6 +10,8 @@ def pascal_triangle(n):
     """
     ret_list = []
     c = 0
+    if n <= 0:
+        return ret_list
     for i in range(1, n + 1):
         sub_list = []
         for j in range(i):
