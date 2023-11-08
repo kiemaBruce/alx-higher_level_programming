@@ -32,6 +32,8 @@ class Student:
                     c = 0
                 elif type(i) is not str:
                     c = 1
+            if len(attrs) == 0:
+                c = 0
         if c == 0:
             filter_set = set(attrs)
             for i in attrs_all:
