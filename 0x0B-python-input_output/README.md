@@ -39,3 +39,17 @@ dictionary, string, integer and boolean) for JSON serialization of an object.
 	first_name, last_name, age):
 	- Public method def to_json(self): that retrieves a dictionary
 	representation of a Student instance.
+### 10-student.py
+- Modify to_json() method to only return desired attributes.
+- def to_json(self, attrs=None):
+- If attrs is a list of strings, only attribute names contained in this list are
+retrieved.
+- Otherwise, all attributes are retrieved.
+### 11-student.py
+- Include Public method def reload_from_json(self, json): that replaces all attributes of the
+Student instance.
+### 12-pascal_triangle.py
+- Contains a function def pascal_triangle(n): that returns a list of lists of
+integers representing the Pascal’s triangle of n.
+- Returns an empty list if n <= 0.
+- n is assumed to always be an integer.
