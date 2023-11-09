@@ -61,6 +61,7 @@ class TestRectangle(unittest.TestCase):
 
     def test_validation(self):
         """Tests the validation of the attributes."""
+        # Test validation of all attributes.
         with self.assertRaises(TypeError) as c:
             rec1 = rectangle.Rectangle("string", 1)
         self.assertEqual(str(c.exception), "width must be an integer")
@@ -87,3 +88,22 @@ class TestRectangle(unittest.TestCase):
         with self.assertRaises(ValueError) as c:
             rec1 = rectangle.Rectangle(12, 1, 8, -5)
         self.assertEqual(str(c.exception), "y must be >= 0")
+        # More tests with more invalid data types.
+        with self.assertRaises(TypeError) as c:
+            rec1 = rectangle.Rectangle(12, [1, 2, 3])
+        self.assertEqual(str(c.exception), "height must be an integer")
+        with self.assertRaises(TypeError) as c:
+            rec1 = rectangle.Rectangle(12, "w")
+        self.assertEqual(str(c.exception), "height must be an integer")
+        with self.assertRaises(TypeError) as c:
+            rec1 = rectangle.Rectangle(12, {"age": 12, "name": "B"})
+        self.assertEqual(str(c.exception), "height must be an integer")
+        with self.assertRaises(TypeError) as c:
+            rec1 = rectangle.Rectangle(12, {1, "unique"})
+        self.assertEqual(str(c.exception), "height must be an integer")
+        with self.assertRaises(TypeError) as c:
+            rec1 = rectangle.Rectangle(12, 1.2)
+        self.assertEqual(str(c.exception), "height must be an integer")
+        with self.assertRaises(TypeError) as c:
+            rec1 = rectangle.Rectangle(12, (1, "coordinates"))
+        self.assertEqual(str(c.exception), "height must be an integer")
