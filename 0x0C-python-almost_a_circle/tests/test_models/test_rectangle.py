@@ -58,3 +58,32 @@ class TestRectangle(unittest.TestCase):
              "'Rectangle' object has no attribute '_TestRectangle__x'"
             )
         )
+
+    def test_validation(self):
+        """Tests the validation of the attributes."""
+        with self.assertRaises(TypeError) as c:
+            rec1 = rectangle.Rectangle("string", 1)
+        self.assertEqual(str(c.exception), "width must be an integer")
+        with self.assertRaises(TypeError) as c:
+            rec1 = rectangle.Rectangle(1, "string")
+        self.assertEqual(str(c.exception), "height must be an integer")
+        with self.assertRaises(TypeError) as c:
+            rec1 = rectangle.Rectangle(12, 1, 'x')
+        self.assertEqual(str(c.exception), "x must be an integer")
+        with self.assertRaises(TypeError) as c:
+            rec1 = rectangle.Rectangle(12, 1, 8, 'y')
+        self.assertEqual(str(c.exception), "y must be an integer")
+        rec1 = rectangle.Rectangle(12, 1, 8, 7, "12")
+        self.assertEqual(rec1.id, "12")
+        with self.assertRaises(ValueError) as c:
+            rec1 = rectangle.Rectangle(-12, 1, 8, 5)
+        self.assertEqual(str(c.exception), "width must be > 0")
+        with self.assertRaises(ValueError) as c:
+            rec1 = rectangle.Rectangle(12, 0, 8, 5)
+        self.assertEqual(str(c.exception), "height must be > 0")
+        with self.assertRaises(ValueError) as c:
+            rec1 = rectangle.Rectangle(12, 1, -8, 5)
+        self.assertEqual(str(c.exception), "x must be >= 0")
+        with self.assertRaises(ValueError) as c:
+            rec1 = rectangle.Rectangle(12, 1, 8, -5)
+        self.assertEqual(str(c.exception), "y must be >= 0")
