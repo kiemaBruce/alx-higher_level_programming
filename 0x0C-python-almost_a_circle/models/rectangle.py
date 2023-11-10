@@ -100,16 +100,20 @@ class Rectangle(base.Base):
         )
         return r_str
 
-    def update(self, *args):
+    def update(self, *args, **kwargs):
         """Updates Rectangle attributes."""
-        for index, value in enumerate(args):
-            if index == 0:
-                self.id = value
-            if index == 1:
-                self.width = value
-            if index == 2:
-                self.height = value
-            if index == 3:
-                self.x = value
-            if index == 4:
-                self.y = value
+        if args:
+            for index, value in enumerate(args):
+                if index == 0:
+                    self.id = value
+                if index == 1:
+                    self.width = value
+                if index == 2:
+                    self.height = value
+                if index == 3:
+                    self.x = value
+                if index == 4:
+                    self.y = value
+        else:
+            for key in kwargs:
+                setattr(self, key, kwargs[key])
