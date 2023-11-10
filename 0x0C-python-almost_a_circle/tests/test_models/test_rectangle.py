@@ -5,6 +5,9 @@
 
 import models.rectangle as rectangle
 import unittest
+from unittest.mock import patch
+import sys
+from io import StringIO
 
 
 class TestRectangle(unittest.TestCase):
@@ -118,3 +121,18 @@ class TestRectangle(unittest.TestCase):
             str(c.exception),
             ("area() missing 1 required positional argument: 'self'")
         )
+
+    def test_display(self):
+        """Test the display method of Rectangle class."""
+        rec1 = rectangle.Rectangle(4, 5)
+        rec_string = "####\n####\n####\n####\n####"
+        with self.assertRaises(TypeError) as c:
+            rectangle.Rectangle.display()
+        self.assertEqual(
+            str(c.exception),
+            "display() missing 1 required positional argument: 'self'"
+        )
+        with patch('sys.stdout', new_callable=StringIO) as mock_stdout:
+            rec1.display()
+            printed_output = mock_stdout.getvalue().strip()
+            self.assertEqual(printed_output, rec_string)
