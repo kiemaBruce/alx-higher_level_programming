@@ -154,3 +154,31 @@ class TestRectangle(unittest.TestCase):
             str(c.exception),
             "__str__() missing 1 required positional argument: 'self'"
         )
+
+    def test_update(self):
+        """Tests the update() function."""
+        rec1 = rectangle.Rectangle(4, 5, 6, 3, 2)
+        self.assertEqual(rec1.width, 4)
+        rec1.update(88)
+        self.assertEqual(rec1.id, 88)
+        rec1.update(88, 90)
+        self.assertEqual(rec1.width, 90)
+        rec1.update(88, 90, 2)
+        self.assertEqual(rec1.height, 2)
+        rec1.update(88, 90, 2, 3)
+        self.assertEqual(rec1.x, 3)
+        rec1.update(88, 90, 2, 3, 5)
+        self.assertEqual(rec1.y, 5)
+        rec1 = rectangle.Rectangle(4, 5, 6, 3, 2)
+        rec1.update()
+        self.assertEqual(rec1.width, 4)
+        self.assertEqual(rec1.height, 5)
+        self.assertEqual(rec1.x, 6)
+        self.assertEqual(rec1.y, 3)
+        self.assertEqual(rec1.id, 2)
+        with self.assertRaises(TypeError) as c:
+            rectangle.Rectangle.update()
+        self.assertEqual(
+            str(c.exception),
+            "update() missing 1 required positional argument: 'self'"
+        )
