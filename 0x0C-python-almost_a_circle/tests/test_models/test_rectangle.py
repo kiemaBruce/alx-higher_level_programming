@@ -32,9 +32,9 @@ class TestRectangle(unittest.TestCase):
         self.assertEqual(
             str(c.exception),
             (
-             "__init__() missing 2 required positional arguments: 'width' and "
-             "'height'"
-            )
+                "__init__() missing 2 required positional arguments: 'width'"
+                " and 'height'"
+            ),
         )
         with self.assertRaises(TypeError) as c:
             rec1 = rectangle.Rectangle(1)
@@ -54,9 +54,7 @@ class TestRectangle(unittest.TestCase):
             ans = rec1.__x
         self.assertEqual(
             str(c.exception),
-            (
-             "'Rectangle' object has no attribute '_TestRectangle__x'"
-            )
+            ("'Rectangle' object has no attribute '_TestRectangle__x'"),
         )
 
     def test_validation(self):
@@ -69,10 +67,10 @@ class TestRectangle(unittest.TestCase):
             rec1 = rectangle.Rectangle(1, "string")
         self.assertEqual(str(c.exception), "height must be an integer")
         with self.assertRaises(TypeError) as c:
-            rec1 = rectangle.Rectangle(12, 1, 'x')
+            rec1 = rectangle.Rectangle(12, 1, "x")
         self.assertEqual(str(c.exception), "x must be an integer")
         with self.assertRaises(TypeError) as c:
-            rec1 = rectangle.Rectangle(12, 1, 8, 'y')
+            rec1 = rectangle.Rectangle(12, 1, 8, "y")
         self.assertEqual(str(c.exception), "y must be an integer")
         rec1 = rectangle.Rectangle(12, 1, 8, 7, "12")
         self.assertEqual(rec1.id, "12")
@@ -107,3 +105,16 @@ class TestRectangle(unittest.TestCase):
         with self.assertRaises(TypeError) as c:
             rec1 = rectangle.Rectangle(12, (1, "coordinates"))
         self.assertEqual(str(c.exception), "height must be an integer")
+
+    def test_area(self):
+        """Tests for the area() method of Rectangle class."""
+        rec1 = rectangle.Rectangle(4, 5)
+        self.assertEqual(rec1.area(), 20)
+        rec1 = rectangle.Rectangle(1, 2, 3, 4, 6)
+        self.assertEqual(rec1.area(), 2)
+        with self.assertRaises(TypeError) as c:
+            rectangle.Rectangle.area()
+        self.assertEqual(
+            str(c.exception),
+            ("area() missing 1 required positional argument: 'self'")
+        )
