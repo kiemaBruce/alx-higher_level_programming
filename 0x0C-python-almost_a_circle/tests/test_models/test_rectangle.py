@@ -124,8 +124,10 @@ class TestRectangle(unittest.TestCase):
 
     def test_display(self):
         """Test the display method of Rectangle class."""
-        rec1 = rectangle.Rectangle(4, 5)
-        rec_string = "####\n####\n####\n####\n####\n"
+        rec1 = rectangle.Rectangle(4, 5, 2, 2)
+        rec_string = (
+            "\n\n  ####\n  ####\n  ####\n  ####\n  ####\n"
+        )
         with self.assertRaises(TypeError) as c:
             rectangle.Rectangle.display()
         self.assertEqual(
@@ -146,3 +148,9 @@ class TestRectangle(unittest.TestCase):
             print(rec1)
             printed_output = mock_stdout.getvalue().strip()
             self.assertEqual(printed_output, r_str)
+        with self.assertRaises(TypeError) as c:
+            rectangle.Rectangle.__str__()
+        self.assertEqual(
+            str(c.exception),
+            "__str__() missing 1 required positional argument: 'self'"
+        )
