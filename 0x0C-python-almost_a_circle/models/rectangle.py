@@ -85,3 +85,12 @@ class Rectangle(base.Base):
         for i in range(self.__height):
             for j in range(self.__width):
                 print('#', end="\n" if j == self.__width - 1 else "")
+
+    def __str__(self):
+        """Returns human-readable string representation of instance."""
+        r_str = (
+            "[Rectangle] "
+            + f"({self.id}) {self.__x}/{self.__y} "
+            + f"- {self.__width}/{self.__height}"
+        )
+        return r_str
