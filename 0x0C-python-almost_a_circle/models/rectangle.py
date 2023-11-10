@@ -99,3 +99,17 @@ class Rectangle(base.Base):
             + f"- {self.__width}/{self.__height}"
         )
         return r_str
+
+    def update(self, *args):
+        """Updates Rectangle attributes."""
+        for index, value in enumerate(args):
+            if index == 0:
+                self.id = value
+            if index == 1:
+                self.width = value
+            if index == 2:
+                self.height = value
+            if index == 3:
+                self.x = value
+            if index == 4:
+                self.y = value
