@@ -125,7 +125,7 @@ class TestRectangle(unittest.TestCase):
     def test_display(self):
         """Test the display method of Rectangle class."""
         rec1 = rectangle.Rectangle(4, 5)
-        rec_string = "####\n####\n####\n####\n####"
+        rec_string = "####\n####\n####\n####\n####\n"
         with self.assertRaises(TypeError) as c:
             rectangle.Rectangle.display()
         self.assertEqual(
@@ -134,5 +134,15 @@ class TestRectangle(unittest.TestCase):
         )
         with patch('sys.stdout', new_callable=StringIO) as mock_stdout:
             rec1.display()
-            printed_output = mock_stdout.getvalue().strip()
+            printed_output = mock_stdout.getvalue()
             self.assertEqual(printed_output, rec_string)
+
+    def test_str(self):
+        """Tests __str__ method of Rectangle class"""
+        rec1 = rectangle.Rectangle(4, 5, 6, 7, 9)
+        r_str = "[Rectangle] (9) 6/7 - 4/5"
+        self.assertEqual(str(rec1), r_str)
+        with patch('sys.stdout', new_callable=StringIO) as mock_stdout:
+            print(rec1)
+            printed_output = mock_stdout.getvalue().strip()
+            self.assertEqual(printed_output, r_str)
