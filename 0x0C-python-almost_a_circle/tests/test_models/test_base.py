@@ -84,3 +84,27 @@ class TestBase(unittest.TestCase):
         with open(filename, mode="r", encoding="utf-8") as myfile:
             str_from_file = myfile.read()
         self.assertEqual(str_from_file, expected_saved_str)
+
+    def test_from_json_string(self):
+        """Tests the from_json_string() method"""
+        with self.assertRaises(TypeError) as c:
+            Base.from_json_string()
+        self.assertEqual(
+            str(c.exception),
+            "from_json_string() missing 1 required positional "
+            "argument: 'json_string'"
+        )
+        s_str = (
+            '[{"id": 22, "size": 5, "x": 1, "y": 2}'
+            ', {"id": 44, "size": 6, "x": 2, "y": 3}]'
+        )
+        self.assertEqual(
+            Base.from_json_string(s_str),
+            [
+                {"id": 22, "size": 5, "x": 1, "y": 2},
+                {"id": 44, "size": 6, "x": 2, "y": 3}
+            ]
+        )
+        e_list = []
+        self.assertEqual(Base.from_json_string(None), e_list)
+        self.assertEqual(Base.from_json_string([]), e_list)
