@@ -65,3 +65,10 @@ class Square(Rectangle):
                     self.height = kwargs[key]
                 else:
                     setattr(self, key, kwargs[key])
+
+    def to_dictionary(self):
+        """Returns the dictionary representation of a Square."""
+        r_dict = dict(
+            id=self.id, size=self.width, x=self.x, y=self.y
+        )
+        return r_dict
