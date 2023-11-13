@@ -54,6 +54,9 @@ class TestSquare(unittest.TestCase):
         with self.assertRaises(TypeError) as e:
             sq1 = Square({1, "uniqueness is my thing"})
         self.assertEqual(str(e.exception), "width must be an integer")
+        with self.assertRaises(TypeError) as e:
+            sq1 = Square(True)
+        self.assertEqual(str(e.exception), "width must be an integer")
         # Test validation with setter
         with self.assertRaises(ValueError) as e:
             sq1 = Square(2)
@@ -64,7 +67,34 @@ class TestSquare(unittest.TestCase):
             sq1.width = ["haha!", 1]
         self.assertEqual(str(e.exception), "width must be an integer")
 
-        def test_str(self):
-            """Tests the overidden __str__ method."""
-            sq1 = Square(5, 1, 2, 20)
-            self.assertEqual(str(sq1), "[Square] (20) 1/2 - 5")
+    def test_str(self):
+        """Tests the overidden __str__ method."""
+        sq1 = Square(5, 1, 2, 20)
+        self.assertEqual(str(sq1), "[Square] (20) 1/2 - 5")
+
+    def test_setter_and_getter(self):
+        """Tests size setter and getter"""
+        sq1 = Square(6)
+        self.assertEqual(sq1.width, 6)
+        self.assertEqual(sq1.width, 6)
+        sq1.size = 9
+        self.assertEqual(sq1.width, 9)
+        self.assertEqual(sq1.height, 9)
+        with self.assertRaises(TypeError) as e:
+            sq1.size = "4"
+        self.assertEqual(str(e.exception), "width must be an integer")
+        with self.assertRaises(TypeError) as e:
+            sq1.size = [1, True]
+        self.assertEqual(str(e.exception), "width must be an integer")
+        with self.assertRaises(TypeError) as e:
+            sq1.size = (1, 2.3)
+        self.assertEqual(str(e.exception), "width must be an integer")
+        with self.assertRaises(TypeError) as e:
+            sq1.size = {"key": 1}
+        self.assertEqual(str(e.exception), "width must be an integer")
+        with self.assertRaises(TypeError) as e:
+            sq1.size = {"key", 1}
+        self.assertEqual(str(e.exception), "width must be an integer")
+        with self.assertRaises(TypeError) as e:
+            sq1.size = True
+        self.assertEqual(str(e.exception), "width must be an integer")
