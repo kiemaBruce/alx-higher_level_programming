@@ -133,3 +133,10 @@ class TestSquare(unittest.TestCase):
         self.assertEqual(sq1.height, 2)
         self.assertEqual(sq1.x, 3)
         self.assertEqual(sq1.y, 55)
+
+    def test_to_dictionary(self):
+        """Tests the to_dictionary() method.
+        """
+        sq1 = Square(5, 1, 2, 34)
+        s_dict = dict(size=5, x=1, y=2, id=34)
+        self.assertEqual(s_dict, sq1.to_dictionary())
