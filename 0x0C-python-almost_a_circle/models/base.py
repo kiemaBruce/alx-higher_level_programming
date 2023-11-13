@@ -62,3 +62,10 @@ class Base:
                 filename = list_objs[0].__class__.__name__ + ".json"
                 with open(filename, mode="w", encoding="utf-8") as myfile:
                     myfile.write(dict_list_json)
+
+    def from_json_string(json_string):
+        """Returns the list of the JSON string representation json_string"""
+        e_list = []
+        if json_string is None or len(json_string) == 0:
+            return e_list
+        return json.loads(json_string)
