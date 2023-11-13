@@ -19,6 +19,11 @@ representation of list_objs to a file.
 	- If list_objs is None, an empty list is saved.
 	- The filename is: <Class name>.json - example: Rectangle.json
 	- Uses the static method to_json_string previously created.
+- Static method def from_json_string(json_string): that returns the list of the
+JSON string representation json_string:
+	- json_string is a string representing a list of dictionaries.
+	- If json_string is None or empty, return an empty list.
+	- Otherwise, returns the list represented by json_string.
 ### models/rectangle.py
 - Defines Rectangle class with:
 -Private instance attributes, each with its own public getter and setter:
