@@ -6,13 +6,14 @@
 import unittest
 import os
 import sys
+from models.rectangle import Rectangle
+from models.square import Square
+from models.base import Base
 
 
 os.chdir("models")
 current_dir = os.getcwd()
 sys.path.append(current_dir)
-
-Base = __import__("base").Base
 
 
 class TestBase(unittest.TestCase):
@@ -42,3 +43,44 @@ class TestBase(unittest.TestCase):
             "to_json_string() missing 1 required positional argument: "
             "'list_dictionaries'"
         )
+
+    def test_save_to_file(self):
+        """Tests the save_to_file() method"""
+        rec1 = Rectangle(12, 24, 3, 2, 44)
+        rec2 = Rectangle(21, 7, 4, 5, 23)
+        list_objs = [rec1, rec2]
+        Base.save_to_file(list_objs)
+        expected_saved_str = (
+            '[{"id": 44, "width": 12, "height": 24, "x": 3, "y": 2}'
+            ', {"id": 23, "width": 21, "height": 7, "x": 4, "y": 5}]'
+        )
+        filename = list_objs[0].__class__.__name__ + ".json"
+        with open(filename, mode="r", encoding="utf-8") as myfile:
+            str_from_file = myfile.read()
+        self.assertEqual(str_from_file, expected_saved_str)
+        with self.assertRaises(TypeError) as c:
+            Base.save_to_file()
+        self.assertEqual(
+            str(c.exception),
+            "save_to_file() missing 1 required positional argument: "
+            "'list_objs'"
+        )
+        sq1 = Square(5, 1, 2, 22)
+        sq2 = Square(6, 2, 3, 44)
+        list_objs = [sq1, sq2]
+        Base.save_to_file(list_objs)
+        expected_saved_str = (
+            '[{"id": 22, "size": 5, "x": 1, "y": 2}'
+            ', {"id": 44, "size": 6, "x": 2, "y": 3}]'
+        )
+        filename = list_objs[0].__class__.__name__ + ".json"
+        with open(filename, mode="r", encoding="utf-8") as myfile:
+            str_from_file = myfile.read()
+        self.assertEqual(str_from_file, expected_saved_str)
+        list_objs = None
+        Base.save_to_file(list_objs)
+        expected_saved_str = "[]"
+        filename = list_objs.__class__.__name__ + ".json"
+        with open(filename, mode="r", encoding="utf-8") as myfile:
+            str_from_file = myfile.read()
+        self.assertEqual(str_from_file, expected_saved_str)
