@@ -44,3 +44,24 @@ class Square(Rectangle):
         #        super(Square, self).height.__set__(self, value)
         self.width = value
         self.height = value
+
+    def update(self, *args, **kwargs):
+        """Updates Square attributes."""
+        if args:
+            for index, value in enumerate(args):
+                if index == 0:
+                    self.id = args[0]
+                if index == 1:
+                    self.width = args[1]
+                    self.height = args[1]
+                if index == 2:
+                    self.x = args[2]
+                if index == 3:
+                    self.y = args[3]
+        elif kwargs:
+            for key in kwargs:
+                if key == "size":
+                    self.width = kwargs[key]
+                    self.height = kwargs[key]
+                else:
+                    setattr(self, key, kwargs[key])
