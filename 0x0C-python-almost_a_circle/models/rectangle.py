@@ -114,6 +114,6 @@ class Rectangle(base.Base):
                     self.x = value
                 if index == 4:
                     self.y = value
-        else:
+        elif kwargs:
             for key in kwargs:
                 setattr(self, key, kwargs[key])
