@@ -1,6 +1,6 @@
 -- Creates a table in the current database in MySQL server.
 -- Create a table if it doesn't exist.
 CREATE TABLE IF NOT EXISTS first_table (
-id INT
+id INT,
 name VARCHAR(256)
 );
