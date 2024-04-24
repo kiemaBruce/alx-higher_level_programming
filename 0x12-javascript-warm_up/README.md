@@ -25,3 +25,14 @@
 - Prints a square using 'X'.
 ### 9-add.js
 - Adds two command line arguments and prints the result to the console.
+### 10-factorial.js
+- Recursively determines the factorial of the command line argument given.
+- The factorial of NaN is returned as 1.
+### 11-second_biggest.js
+- Returns the second biggest integer in a list of command line arguments.
+- Assumes all arguments can be converted to integers.
+### 12-object.js
+- Creates an object, creates properties and assign values to them.
+- Then modifies the value of a property of the object from outside the object.
+### 13-add.js
+- Exports a function such that the function is visible from the outside.
