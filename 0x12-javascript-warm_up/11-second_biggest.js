@@ -20,7 +20,7 @@ function countGreater (x, arr) {
   let lastGreatest;
 
   for (let i = 2; i < arr.length; i++) {
-    if (arr[i] > x) {
+    if (Number(arr[i]) > Number(x)) {
       if (no === 0) {
         lastGreatest = arr[i];
         no += 1;
