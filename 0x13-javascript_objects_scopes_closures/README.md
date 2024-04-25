@@ -20,3 +20,11 @@
 - Create an instance method called charPrint(c) that prints the rectangle using
   the character c
     - If c is undefined, use the character X
+### 7-occurrences.js
+- Counts the number of occurences of an element in a list.
+### 8-esrever.js
+- Returns the reversed version of a list.
+### 9-logme.js
+- Use closures to keep track of the number of times a function was called.
+### 10-converter.js
+- Convert a number to specified base using closures.
