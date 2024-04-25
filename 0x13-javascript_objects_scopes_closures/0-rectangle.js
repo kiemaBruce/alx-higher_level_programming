@@ -1,9 +1,7 @@
 #!/usr/bin/node
 class Rectangle {
-  constructor () {
-    /**
-     * This constructor is empty because this is an empty class definition.
-     */
+  static doNothing () {
+    // Empty placeholder function.
   }
 }
 module.exports = Rectangle;
