@@ -24,3 +24,7 @@
 - Computes and prints factorial.
 ### 11-second_biggest.js
 - Searches the second biggest integer in the list of arguments.
+### 12-object.js
+- Modifies the value of an object property from outside the object.
+### 13-add.js
+- Export a named function which returns the sum of 2 integers.
