@@ -17,8 +17,8 @@ if __name__ == "__main__":
         cur = conn.cursor()
         query = "SELECT * FROM states WHERE name LIKE %s order by id ASC"
         """for matching the substring within a larger string"""
-        """cur.execute(query, (f"%{state_name}%",))"""
-        cur.execute(query, (state_name,))
+        cur.execute(query, (f"%{state_name}%",))
+        """cur.execute(query, (state_name,))"""
         states = cur.fetchall()
         for state in states:
             print(state)
