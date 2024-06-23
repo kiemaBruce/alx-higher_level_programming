@@ -1,5 +1,6 @@
 #!/usr/bin/python3
-"""Lists all states from hbtn_0e_0_usa database"""
+"""Lists all states from hbtn_0e_0_usa database but protects from
+SQL injection"""
 
 if __name__ == "__main__":
     import MySQLdb
