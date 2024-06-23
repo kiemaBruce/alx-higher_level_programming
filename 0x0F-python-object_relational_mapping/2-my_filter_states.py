@@ -15,10 +15,18 @@ if __name__ == "__main__":
                                passwd=mySQL_password, db=mySQL_database,
                                port=3306)
         cur = conn.cursor()
+        query_template = """SELECT * FROM states WHERE name = '{state}'
+        order by id ASC
+        """
+
+        """
         query = "SELECT * FROM states WHERE name LIKE %s order by id ASC"
+        """
         """for matching the substring within a larger string"""
-        cur.execute(query, (f"%{state_name}%",))
+        """cur.execute(query, (f"%{state_name}%",))"""
         """cur.execute(query, (state_name,))"""
+        query = query_template.format(state=state_name)
+        cur.execute(query)
         states = cur.fetchall()
         for state in states:
             print(state)
