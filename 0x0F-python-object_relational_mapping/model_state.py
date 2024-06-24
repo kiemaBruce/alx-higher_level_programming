@@ -26,8 +26,14 @@ if __name__ == "__main__":
     Base = declarative_base()
 
     class State(Base):
-        """The definition of the State which is the definition of the states
-        table"""
+        """Definition of the State which defines of the states table
+
+        Attributes:
+            __tablename__ (str): the name of the table that this class defines.
+            id (int): primary key of the table which auto-increments.
+            name (str): the name of the state.
+
+        """
         __tablename__ = 'states'
         id = Column(Integer, primary_key=True)
         name = Column(String(128), nullable=False)
