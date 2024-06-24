@@ -1,6 +1,8 @@
 #!/usr/bin/python3
 """Contains the class definition of a state and an instance Base =
-declarative_base()"""
+declarative_base()
+This script connects to a MySQL database and creates the `states` table if it
+does not exist."""
 
 
 if __name__ == "__main__":
@@ -26,7 +28,8 @@ if __name__ == "__main__":
     Base = declarative_base()
 
     class State(Base):
-        """Definition of the State which defines of the states table
+        """
+        Definition of the State which defines of the states table
 
         Attributes:
             __tablename__ (str): the name of the table that this class defines.
