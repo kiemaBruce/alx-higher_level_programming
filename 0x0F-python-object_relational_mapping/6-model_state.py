@@ -1,5 +1,6 @@
 #!/usr/bin/python3
-"""Prints the first State object from the database hbtn_0e_6_usa"""
+"""Contains the class definition of a state and an instance Base =
+declarative_base()"""
 
 
 if __name__ == "__main__":
