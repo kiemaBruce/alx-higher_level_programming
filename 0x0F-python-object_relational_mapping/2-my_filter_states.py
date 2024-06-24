@@ -15,7 +15,7 @@ if __name__ == "__main__":
                                passwd=mySQL_password, db=mySQL_database,
                                port=3306)
         cur = conn.cursor()
-        query_template = """SELECT * FROM states WHERE name = '{state}'
+        query_template = """SELECT * FROM states WHERE BINARY name = '{state}'
         order by id ASC
         """
 
