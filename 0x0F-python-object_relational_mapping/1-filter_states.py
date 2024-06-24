@@ -14,7 +14,9 @@ if __name__ == "__main__":
                                passwd=mySQL_password, db=mySQL_database,
                                port=3306)
         cur = conn.cursor()
-        query = "SELECT * FROM states WHERE name LIKE 'N%' order by id ASC"
+        query = """SELECT * FROM states
+        WHERE name LIKE BINARY 'N%'
+        order by id ASC"""
         cur.execute(query)
         states = cur.fetchall()
         for state in states:
