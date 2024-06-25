@@ -6,7 +6,7 @@ does not exist."""
 
 
 if __name__ == "__main__":
-    from sqlalchemy.ext.automap import automap_base
+    from model_state import Base, State
     from sqlalchemy import create_engine
     from sqlalchemy.orm import Session
     from sqlalchemy.orm import sessionmaker
@@ -24,11 +24,6 @@ if __name__ == "__main__":
                 ),
                 pool_pre_ping=True
             )
-    Base = automap_base()
-    """Base.prepare(engine, autoload_with=engine)"""
-    Base.prepare(engine)
-    """Base.prepare(engine, reflect=True)"""
-    State = Base.classes.states
     Session = sessionmaker(bind=engine)
     session = Session()
     states = session.query(State).all()
