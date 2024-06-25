@@ -28,4 +28,4 @@ if __name__ == "__main__":
     with Session() as session:
         states = session.query(State).order_by(State.id.asc()).all()
         for state in states:
-            print(f'{state.id}:{state.name}')
+            print(f'{state.id}: {state.name}')
