@@ -28,15 +28,15 @@ if __name__ == "__main__":
             )
     Session = sessionmaker(bind=engine)
     with Session() as session:
-        states = session.query(State).filter(
+        match = session.query(State).filter(
                                         collate(
                                             State.name,
                                             'utf8mb4_bin'
                                         ).like(f'{state_name}')
                                       ).order_by(
                                             State.id.asc()
-                                      ).all()
-        if len(states) == 0:
+                                      ).first()
+        if match is None:
             print('Not found')
-        for state in states:
-            print(f'{state.id}')
+        else:
+            print(f'{match.id}')
