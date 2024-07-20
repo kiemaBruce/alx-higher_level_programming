@@ -1,0 +1,3 @@
+#!/bin/bash
+# Sends a POST request with a body and displays response of that request
+curl -s -X POST -d "email=test@gmail.com&subject=I will always be here for PLD" "$1"
