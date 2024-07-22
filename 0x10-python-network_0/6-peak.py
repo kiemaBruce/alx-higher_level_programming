@@ -1,5 +1,6 @@
 #!/usr/bin/python3
-# Finds a peak in a list of unsorted integers.
+"""Finds a peak in a list of unsorted integers."""
+
 
 def find_peak_helper(list_of_integers, sub_list, sub_start, sub_end, flag):
     """Recursively finds the peak in an unsorted list of integers"""
