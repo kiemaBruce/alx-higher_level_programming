@@ -3,6 +3,7 @@
 response (decoded in utf-8)"""
 
 import sys
+import urllib.error
 import urllib.parse
 import urllib.request
 
