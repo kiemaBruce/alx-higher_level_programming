@@ -41,6 +41,7 @@ def find_peak_helper(list_of_integers, sub_list, sub_start, sub_end, flag):
         # list end, only check left
         elif sub_start == len(list_of_integers) - 1:
             if sub_list[0] >= list_of_integers[sub_start - 1]:
+                r = sub_list[0]
                 return sub_list[0]
         elif (sub_list[0] >= list_of_integers[sub_start + 1] and
                 sub_list[0] >= list_of_integers[sub_start - 1]):
@@ -50,31 +51,22 @@ def find_peak_helper(list_of_integers, sub_list, sub_start, sub_end, flag):
         # only compare to its left
         if list_of_integers[mid_index] >= list_of_integers[mid_index - 1]:
             return list_of_integers[mid_index]
-    elif (list_of_integers[mid_index] >= list_of_integers[mid_index + 1] and
-            list_of_integers[mid_index] >= list_of_integers[mid_index - 1]):
-        return list_of_integers[mid_index]
-    # recursion
-    if len(sub_list) == 2:  # this type only has 1 sub-list; the left one
-        return (
-                find_peak_helper(
-                    list_of_integers,
-                    l_sub,
-                    l_sub_start,
-                    l_sub_end,
-                    1
-                )
-                )
-    # else:
-    # right
-    r = find_peak_helper(list_of_integers, r_sub, r_sub_start, r_sub_end, 1)
-    if r is not None:  # only traverse left sub-list if no peak is in right one
-        return r
-    # left
-    return (
-            find_peak_helper(
-                list_of_integers, l_sub, l_sub_start, l_sub_end, 1
-                )
-            )
+        # if not a peak, search it's left sub-list(doesn't have a right one)
+        return (find_peak_helper(list_of_integers, l_sub, l_sub_start,
+                l_sub_end, 1))
+    else:
+        if (list_of_integers[mid_index] >= list_of_integers[mid_index + 1] and
+                list_of_integers[mid_index] >=
+                list_of_integers[mid_index - 1]):
+            return list_of_integers[mid_index]
+        elif list_of_integers[mid_index] >= list_of_integers[mid_index - 1]:
+            # There must be a peak on right sub-list
+            return (find_peak_helper(list_of_integers, r_sub, r_sub_start,
+                    r_sub_end, 1))
+        elif list_of_integers[mid_index] >= list_of_integers[mid_index + 1]:
+            # recursively search left, since there must be a peak there
+            return (find_peak_helper(list_of_integers, l_sub, l_sub_start,
+                    l_sub_end, 1))
 
 
 def find_peak(list_of_integers):
