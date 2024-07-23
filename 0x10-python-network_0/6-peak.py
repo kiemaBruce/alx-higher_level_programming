@@ -16,9 +16,9 @@ def find_peak_helper(list_of_integers, sub_list, sub_start, sub_end, flag):
     elif len(sub_list) == 2:  # can only have a left sub-list
         """Some of these cases might be at start or end of list, check to avoid
         invalid indices"""
-        l_sub_start = mid_index
-        l_sub_end = mid_index
-        l_sub = list_of_integers[l_sub_start:]
+        l_sub_start = mid_index - 1
+        l_sub_end = mid_index - 1
+        l_sub = list_of_integers[l_sub_start:l_sub_end + 1]
     else:
         """
         right sub_list
@@ -47,10 +47,9 @@ def find_peak_helper(list_of_integers, sub_list, sub_start, sub_end, flag):
             return sub_list[0]
         return None
     elif len(sub_list) == 2:
-        # end, only compare to its left
-        if mid_index == len(list_of_integers) + 1:
-            if list_of_integers[mid_index] >= list_of_integers[mid_index - 1]:
-                return list_of_integers[mid_index]
+        # only compare to its left
+        if list_of_integers[mid_index] >= list_of_integers[mid_index - 1]:
+            return list_of_integers[mid_index]
     elif (list_of_integers[mid_index] >= list_of_integers[mid_index + 1] and
             list_of_integers[mid_index] >= list_of_integers[mid_index - 1]):
         return list_of_integers[mid_index]
