@@ -20,7 +20,7 @@ if __name__ == "__main__":
             commit_str = ""
             commit_str += commit.get('sha')
             commit_str += ': '
-            commit_str += commit.get('commit').get('committer').get('name')
+            commit_str += commit.get('commit').get('author').get('name')
             formatted_commits.append(commit_str)
             i += 1
         for item in formatted_commits:
