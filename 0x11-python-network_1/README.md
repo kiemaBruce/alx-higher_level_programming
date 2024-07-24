@@ -54,4 +54,11 @@
 - The first argument to the script should be your username
 - The second argument should be your password (in your case, a personal access
   token as password)
-- You must use the package requests and sys
+- Uses the packages requests and sys
+### 100-github_commits.py
+- Shows 10 most recent commits to a repo by a specific user. These are listed
+  from the most recent to the oldest.
+- The script takes two arguments:
+	- The first argument is the repository name
+	- The second argument is the owner name
+- Uses the packages requests and sys
