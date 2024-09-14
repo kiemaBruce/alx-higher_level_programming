@@ -37,6 +37,11 @@
 ### 100-starwars_characters.js
 - Lists all characters of a Star Wars movie.
 - The first argument is the Movie ID - example: 3 = “Return of the Jedi”
+- One character is displayed per line.
+- Uses the Star Wars API (https://swapi-api.alx-tools.com/api/).
+### 101-starwars_characters.js
+- Lists all characters of a Star Wars movie.
+- The first argument is the Movie ID - example: 3 = "Return of the Jedi"
 - One character is displayed per line in the same order of the list of
   characters in the /films/ response.
 - Uses the Star Wars API (https://swapi-api.alx-tools.com/api/).
