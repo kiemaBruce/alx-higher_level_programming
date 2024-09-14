@@ -19,7 +19,14 @@ request(url, function (error, response, body) {
       userTasks[userId] = completed;
       prevUserId = userId;
     }
-    console.log(userTasks);
+    // Remove users with no completed tasks.
+    const filteredUserTasks = {};
+    for (const user in userTasks) {
+      if (userTasks[user] !== 0) {
+        filteredUserTasks[user] = userTasks[user];
+      }
+    }
+    console.log(filteredUserTasks);
   } else if (error) {
     console.error(error);
   } else if (response.statusCode !== 200) {
